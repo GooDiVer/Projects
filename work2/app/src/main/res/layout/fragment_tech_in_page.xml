@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/techGraph"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:id="@+id/techDesc"
+        android:layout_width="match_parent"
+        android:layout_height="183dp"
+        android:layout_alignBottom="@+id/techGraph"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_toEndOf="@+id/techGraph"
+        android:layout_toRightOf="@+id/techGraph"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/techName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/techGraph"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
+
+</RelativeLayout>

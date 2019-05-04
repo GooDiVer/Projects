@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@android:color/white"/>
+    <!--Добавил белый фон для всего дравабл. Без него фон по умолчанию
+    будет черным-->
+    <item>
+        <bitmap android:src="@drawable/ar"
+            android:gravity="center"/>
+        <!--Добавил маленькую картинку в дравабл.-->
+
+    </item>
+
+</layer-list>
+<!--Этот drawable я использую в собственнодельной Theme, которая определена в Styles.xml-->

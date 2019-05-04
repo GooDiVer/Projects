@@ -30,8 +30,6 @@ public class MainActivity extends Activity implements TechItemClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rv = findViewById(R.id.recyclerTech);
-
-        rv = findViewById(R.id.recyclerTech);
         TechClient.getTechClient().create(TechApi.class).getTech().enqueue(new Callback<List<TechItem>>() {
             @Override
             public void onResponse(Call<List<TechItem>> call, Response<List<TechItem>> response) {

@@ -28,6 +28,7 @@ public class MainActivity extends Activity implements TechItemClickListener{
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        rv = findViewById(R.id.recyclerTech);
 
         TechClient.getTechClient().create(TechApi.class).getTech().enqueue(new Callback<List<TechItem>>() {
             @Override

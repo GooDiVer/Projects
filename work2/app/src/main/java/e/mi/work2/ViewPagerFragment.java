@@ -41,8 +41,9 @@ public class ViewPagerFragment extends Fragment {
         postponeEnterTransition();
         if(Build.VERSION.SDK_INT >= KITKAT) {
             setSharedElementEnterTransition(TransitionInflater.from(getContext()).inflateTransition(android.R.transition.move));
+            setSharedElementReturnTransition(TransitionInflater.from(getContext()).inflateTransition(android.R.transition.move));
+
         }
-        setSharedElementReturnTransition(null);
     }
 
     @Nullable

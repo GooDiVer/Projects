@@ -43,26 +43,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(ArrayList<TechItem> techItems) {
+    public void loadData(List<TechItem> techItems){
         this.techItems = techItems;
+    }
+
+    public List<TechItem> getTechItems() {
+        return techItems;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, int i) {
-        final TechItem techItem = techItems.get(i + 1);
 
+        final TechItem techItem = techItems.get(i);
         Picasso.get()
                 .load(BASE_IMAGE_URL + techItem.getGraphic())
                 .into(myViewHolder.image);
 
         ViewCompat.setTransitionName(myViewHolder.image,techItem.getName());
-//        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ticl.onTechItemClick(myViewHolder.getAdapterPosition(), techItem, myViewHolder.image);
-//            }
-//        });
-
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ticl.onTechItemClick(myViewHolder.getAdapterPosition(), techItem, myViewHolder.image);
+            }
+        });
         myViewHolder.name.setText(techItem.getName());
     }
 

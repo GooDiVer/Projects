@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,6 @@ public class TechItemInPageFragment extends Fragment {
         TechItem techItem = getArguments().getParcelable(EXTRA_TECH_ITEM);
         String transitionName = getArguments().getString(EXTRA_TRANSITION_NAME);
 
-        TextView techDescription = view.findViewById(R.id.techDesc);
         TextView techName = view.findViewById(R.id.techName);
         ImageView techGraph = view.findViewById(R.id.techGraph);
 
@@ -84,8 +84,5 @@ public class TechItemInPageFragment extends Fragment {
                 });
 
         techName.setText(techItem.getName());
-        techDescription.setText(techItem.getDescription());
-
-
     }
 }

@@ -14,8 +14,11 @@ import e.mi.work3_v2.Data.Student;
 import e.mi.work3_v2.Data.Util;
 import e.mi.work3_v2.database.StudentsDbHelper;
 
+import static e.mi.work3_v2.Data.Student.StudentEntry.COLUMN_FAMILY;
+import static e.mi.work3_v2.Data.Student.StudentEntry.COLUMN_FATHERSTVO;
 import static e.mi.work3_v2.Data.Student.StudentEntry.COLUMN_FIO;
 import static e.mi.work3_v2.Data.Student.StudentEntry.COLUMN_ID;
+import static e.mi.work3_v2.Data.Student.StudentEntry.COLUMN_NAME;
 import static e.mi.work3_v2.Data.Student.StudentEntry.TABLE_NAME;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         StudentsDbHelper dbHelper = new StudentsDbHelper(this);
         dbHelper.deleteAllStudents();
-
-        dbHelper.onUpgrade(dbHelper.getWritableDatabase(),1,2);
 
         for(int i = 0; i < 5; i++) {
             String[] splitedFIO = Util.getStudentRandomRaw().split("\\s+");
@@ -63,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onButton3(View view) {
         String query1 = "UPDATE " + TABLE_NAME +
-                " SET " + COLUMN_FIO +  " = 'Ivanov Ivan Ivanovich' " +
+                " SET " + COLUMN_FAMILY +  " = 'Ivanov', " +
+                COLUMN_NAME +  " = 'Ivan', " +
+                COLUMN_FATHERSTVO +  " = 'Ivanovich' " +
                 "WHERE " + COLUMN_ID +
                 " = (SELECT max(" + COLUMN_ID + ")" +
                 " FROM " + TABLE_NAME + ")";

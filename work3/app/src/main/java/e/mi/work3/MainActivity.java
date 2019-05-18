@@ -30,11 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
         StudentsDbHelper dbHelper = new StudentsDbHelper(this);
         dbHelper.deleteAllStudents();
+        dbHelper.onDowngrade(dbHelper.getWritableDatabase(),2,1);
+
         for(int i = 0; i < 5; i++) {
             dbHelper.insertStudent(String.valueOf(ID++),
                     Util.getStudentRandomRaw(),
                     Util.getCurrentTime());
         }
+
     }
 
     public void onButton1(View view) {
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onButton3(View view) {
         SQLiteDatabase db1 = StudentsDbHelper.getInstance(this).getWritableDatabase();
-        StudentsDbHelper.getInstance(this).onUpgrade(db1,1,2);
+        StudentsDbHelper.getInstance(this).change(db1);
 
     }
 

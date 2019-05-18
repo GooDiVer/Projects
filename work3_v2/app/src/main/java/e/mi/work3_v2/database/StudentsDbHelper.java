@@ -28,15 +28,16 @@ public class StudentsDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(Student.StudentEntry.getSqlCreateEntries_V1());
+        if(DATABASE_VERSION == 1)
+            db.execSQL(Student.StudentEntry.getSqlCreateEntries_V1());
+        else
+            onUpgrade(db,1,2);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if(newVersion == DATABASE_VERSION) {
             db.execSQL(Student.StudentEntry.getSqlDeleteEntries());
             db.execSQL(Student.StudentEntry.getSqlCreateEntries_V2());
-        }
     }
 
     @Override

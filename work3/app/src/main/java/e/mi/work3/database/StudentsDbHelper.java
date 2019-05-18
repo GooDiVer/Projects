@@ -16,6 +16,8 @@ import e.mi.work3.Data.Student;
 import static e.mi.work3.Data.Student.StudentEntry.COLUMN_FIO;
 import static e.mi.work3.Data.Student.StudentEntry.COLUMN_ID;
 import static e.mi.work3.Data.Student.StudentEntry.TABLE_NAME;
+import static e.mi.work3.Data.Student.StudentEntry.getSqlCreateEntries;
+import static e.mi.work3.Data.Student.StudentEntry.getSqlDeleteEntries;
 
 
 public class StudentsDbHelper extends SQLiteOpenHelper {
@@ -35,6 +37,11 @@ public class StudentsDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(getSqlDeleteEntries());
+        onCreate(db);
+    }
+
+    public void change(SQLiteDatabase db) {
         String query = "UPDATE " + TABLE_NAME +
                 " SET " + COLUMN_FIO +  " = 'Ivanov Ivan Ivanovich' " +
                 "WHERE " + COLUMN_ID +
@@ -53,12 +60,11 @@ public class StudentsDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-
         values.put(Student.StudentEntry.COLUMN_ID,ID);
         values.put(Student.StudentEntry.COLUMN_FIO,FIO);
         values.put(Student.StudentEntry.COLUMN_TIME,time);
 
-        long rawId = db.insert(TABLE_NAME, null, values);
+        long rawId = db.insertOrThrow(TABLE_NAME, null, values);
 
         return rawId;
     }

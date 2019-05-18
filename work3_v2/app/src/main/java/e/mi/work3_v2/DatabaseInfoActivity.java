@@ -14,7 +14,6 @@ public class DatabaseInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_student);
 
-
         MyAdapter adapter = new MyAdapter(StudentsDbHelper.getInstance(this).getAllStudent(),this);
 
         RecyclerView rv = findViewById(R.id.recyclerViewStudent);

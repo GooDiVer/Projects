@@ -37,7 +37,7 @@ public class Student {
             return SQL_CREATE_ENTRIES_V1;
         }
         public static String getSqlCreateEntries_V2() {
-            return SQL_CREATE_ENTRIES_V1;
+            return SQL_CREATE_ENTRIES_V2;
         }
 
         public static String getSqlDeleteEntries() {

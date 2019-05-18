@@ -18,7 +18,7 @@ import static e.mi.work3_v2.Data.Student.StudentEntry.TABLE_NAME;
 
 public class StudentsDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     public static final String DATABASE_NAME = "Students.db";
 
@@ -33,15 +33,7 @@ public class StudentsDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String query1 = "UPDATE " + TABLE_NAME +
-                " SET " + COLUMN_FIO +  " = 'Ivanov Ivan Ivanovich' " +
-                "WHERE " + COLUMN_ID +
-                " = (SELECT max(" + COLUMN_ID + ")" +
-                " FROM " + TABLE_NAME + ")";
-        if (oldVersion == 1) {
-            db.execSQL(query1);
-        }
-        else {
+        if(newVersion == DATABASE_VERSION) {
             db.execSQL(Student.StudentEntry.getSqlDeleteEntries());
             db.execSQL(Student.StudentEntry.getSqlCreateEntries_V2());
         }
@@ -52,14 +44,16 @@ public class StudentsDbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public long insertStudent(String ID, String FIO, String time) {
+    public long insertStudent(String ID, String family, String name, String father, String time) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
         values.put(Student.StudentEntry.COLUMN_ID,ID);
-        values.put(Student.StudentEntry.COLUMN_FIO,FIO);
+        values.put(Student.StudentEntry.COLUMN_FAMILY,family);
+        values.put(Student.StudentEntry.COLUMN_NAME,name);
+        values.put(Student.StudentEntry.COLUMN_FATHERSTVO,father);
         values.put(Student.StudentEntry.COLUMN_TIME,time);
 
         long rawId = db.insert(TABLE_NAME, null, values);
@@ -80,8 +74,15 @@ public class StudentsDbHelper extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
             do {
                 Student student = new Student();
+                String family = (cursor.getString(cursor.getColumnIndex(Student.StudentEntry.COLUMN_FAMILY)));
+                String name = (cursor.getString(cursor.getColumnIndex(Student.StudentEntry.COLUMN_NAME)));
+                String fatherName = (cursor.getString(cursor.getColumnIndex(Student.StudentEntry.COLUMN_FATHERSTVO)));
+                String fullName = family + " " + name + " " + fatherName;
+
+                Log.i("info", fullName);
+
                 student.setID(cursor.getInt(cursor.getColumnIndex(Student.StudentEntry.COLUMN_ID)));
-                student.setFIO(cursor.getString(cursor.getColumnIndex(Student.StudentEntry.COLUMN_FIO)));
+                student.setFIO(family + " " + name + " " + fatherName);
                 student.setTime(cursor.getString(cursor.getColumnIndex(Student.StudentEntry.COLUMN_TIME)));
 
                 studentList.add(student);

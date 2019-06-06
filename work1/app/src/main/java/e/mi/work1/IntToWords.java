@@ -1,4 +1,4 @@
-package e.mi.laba1;
+package e.mi.work1;
 
 public class IntToWords {
     private static final String dig1[][] = {{"одна", "две", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"},

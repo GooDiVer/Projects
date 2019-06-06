@@ -1,10 +1,9 @@
-package e.mi.laba1;
+package e.mi.work1;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import e.mi.laba1.MainActivity;
 import e.mi.laba1.R;
 
 public class SplashScreen extends AppCompatActivity {

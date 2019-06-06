@@ -1,4 +1,4 @@
-package e.mi.work1;
+package e.mi.work4;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("e.mi.laba1", appContext.getPackageName());
+        assertEquals("e.mi.work4", appContext.getPackageName());
     }
 }

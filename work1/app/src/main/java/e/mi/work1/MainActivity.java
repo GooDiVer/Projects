@@ -1,4 +1,4 @@
-package e.mi.laba1;
+package e.mi.work1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,11 +13,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import e.mi.laba1.R;
+
+
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    e.mi.laba1.MyAdapter adapter;
+    MyAdapter adapter;
     RecyclerView.LayoutManager layoutManager;
-    ArrayList<e.mi.laba1.ItemRecycler> dataset;
+    ArrayList<ItemRecycler> dataset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
         dataset = new ArrayList<>();
 
-        adapter = new e.mi.laba1.MyAdapter(dataset,this);
+        adapter = new MyAdapter(dataset,this);
         recyclerView = findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
         for(int i = 1; i <= 1000000; i++) {
-            e.mi.laba1.ItemRecycler item = new e.mi.laba1.ItemRecycler();
+            ItemRecycler item = new ItemRecycler();
             item.setImageView(R.drawable.ar);
             dataset.add(item);
 

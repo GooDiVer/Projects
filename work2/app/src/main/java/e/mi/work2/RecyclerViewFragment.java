@@ -63,6 +63,7 @@ public class RecyclerViewFragment extends Fragment implements TechItemClickListe
 
             }
         });
+
         Log.i("info", String.valueOf(adapter.getItemCount()));
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));

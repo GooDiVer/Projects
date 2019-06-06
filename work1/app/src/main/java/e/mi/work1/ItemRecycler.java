@@ -1,4 +1,4 @@
-package e.mi.laba1;
+package e.mi.work1;
 
 import android.widget.ImageView;
 import android.widget.TextView;

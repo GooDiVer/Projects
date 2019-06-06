@@ -1,4 +1,4 @@
-package e.mi.work1;
+package e.mi.work4;
 
 import org.junit.Test;
 
